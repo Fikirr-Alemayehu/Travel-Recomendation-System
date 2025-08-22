@@ -16,7 +16,12 @@ user_predictions = [model.predict(user_id, iid) for iid in all_items]
 # Sort and pick top-5
 top_5 = sorted(user_predictions, key=lambda x: x.est, reverse=True)[:5]
 
+# Get destination names instead of IDs
+dest_names = [
+    destinations.loc[destinations['DestinationID'] == d, 'Name'].values[0]
+    for d in top_destinations
+]
 # Map back to original Destination IDs
 top_destinations = [destination_encoder.inverse_transform([rec.iid])[0] for rec in top_5]
-print(f"Top 5 recommended destinations for user {user_id}: {top_destinations}")
+print(f"Top 5 recommended destinations for user {user_id}: {dest_names}")
 
