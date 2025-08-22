@@ -1,0 +1,13 @@
+# Ignore Colab & system files
+.ipynb_checkpoints/
+__pycache__/
+*.DS_Store
+
+# Ignore archives and temporary files
+*.zip
+
+# Ignore JSON configs / credentials
+*.json
+
+# Ignore sample data from Colab
+/sample_data/
